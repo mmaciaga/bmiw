@@ -9,14 +9,12 @@ import matplotlib.pyplot as plt
 def read_file(filename):
     with gzip.open(filename, 'rt') as file:
         sequences = [seq_record.seq for seq_record in SeqIO.parse(file, 'fastq')]
-
     return sequences
 
 
 def gc_content(sequences):
     gc_values = sorted(100 * gc_fraction(seq) for seq in sequences)
-    mean_gc = sum(gc_values) / len(gc_values)
-    return mean_gc
+    return sum(gc_values) / len(gc_values)
 
 def count_reads(sequences):
     return len(sequences)
@@ -61,6 +59,6 @@ def main():
     print(f'mean gc in nanopore: {mean_gc_NP:.2f}%')
     histogram(nanopore)
 
-
+#wolno działa ale ważne że działa
 if __name__ == '__main__':
     main()
