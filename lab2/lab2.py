@@ -30,11 +30,19 @@ def median_len(genes):
     return statistics.median(length)
 
 def main():
-    records = read_file('assembly.gbff')
-    genes = find_genes(records)
-    unknown, known = find_function(genes)
-    print(f'liczba genow o nieznanej funkcji: {unknown}\nliczba genow o znanej funkcji: {known}')
-    print(f'mediana dlugosci genu: {median_len(genes)}')
+    light = read_file('assembly.gbff')
+    genes_l = find_genes(light)
+    unknown_l, known_l = find_function(genes_l)
+    print('-' * 5, 'LIGHT', '-' * 5)
+    print(f'liczba genow o nieznanej funkcji: {unknown_l}\nliczba genow o znanej funkcji: {known_l}')
+    print(f'mediana dlugosci genu: {median_len(genes_l)}')
+
+    full = read_file('assembly_full.gbff')
+    genes_f = find_genes(full)
+    unknown_f, known_f = find_function(genes_f)
+    print('-' * 5, 'FULL', '-' * 5)
+    print(f'liczba genow o nieznanej funkcji: {unknown_f}\nliczba genow o znanej funkcji: {known_f}')
+    print(f'mediana dlugosci genu: {median_len(genes_f)}')
 
 if __name__ == '__main__':
     main()
